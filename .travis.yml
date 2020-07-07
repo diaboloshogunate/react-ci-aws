@@ -6,3 +6,12 @@ before_install:
   - docker build -t diaboloshogunate/react-ci:latest -f Dockerfile.dev .
 script:
   - docker run -e CI=true diaboloshogunate/react-ci:latest npm test -- --coverage
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "robert-parker.me"
+  env: "RobertParkerme-env"
+  bucket_name: "elasticbeanstalk-us-east-2-966203484548"
+  bucket_path: "robert-parker.me"
+  on:
+    branch: master
