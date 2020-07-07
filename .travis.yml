@@ -3,6 +3,6 @@ sudo: required
 services:
   - docker
 before_install:
-  - docker build -t diaboloshogunate/react-ci:latest -f .
+  - docker build -t diaboloshogunate/react-ci:latest -f Dockerfile.dev .
 script:
   - docker run -e CI=true diaboloshogunate/react-ci:latest npm test -- --coverage
